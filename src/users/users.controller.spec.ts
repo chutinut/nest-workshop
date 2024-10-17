@@ -1,11 +1,11 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { ModuleMocker, MockFunctionMetadata } from 'jest-mock';
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
+import { Test, TestingModule } from "@nestjs/testing";
+import { ModuleMocker, MockFunctionMetadata } from "jest-mock";
+import { UsersController } from "./users.controller";
+import { UsersService } from "./users.service";
 
 const moduleMocker = new ModuleMocker(global);
 
-describe('UsersController', () => {
+describe("UsersController", () => {
   let controller: UsersController;
   let service: UsersService;
 
@@ -26,21 +26,7 @@ describe('UsersController', () => {
           useValue: mockUserService,
         },
       ],
-    })
-      .useMocker((token) => {
-        const results = ['test1', 'test2'];
-        if (token === UsersService) {
-          return { findAll: jest.fn().mockResolvedValue(results) };
-        }
-        if (typeof token === 'function') {
-          const mockMetadata = moduleMocker.getMetadata(
-            token,
-          ) as MockFunctionMetadata<any, any>;
-          const Mock = moduleMocker.generateFromMetadata(mockMetadata);
-          return new Mock();
-        }
-      })
-      .compile();
+    }).compile();
 
     controller = module.get<UsersController>(UsersController);
     service = module.get<UsersService>(UsersService);
@@ -48,18 +34,16 @@ describe('UsersController', () => {
 
   afterEach(() => jest.clearAllMocks());
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
+  it("should be defined", () => expect(controller).toBeDefined());
 
-  const _id = '000000000000000000000001';
+  const _id = "000000000000000000000001";
   const userData = {
-    name: 'John Doe',
-    email: 'john@example.com',
+    name: "John Doe",
+    email: "john@example.com",
     age: 30,
   };
-  describe('create an user data', () => {
-    it('should create a new user', async () => {
+  describe("create an user data", () => {
+    it("should create a new user", async () => {
       const mockUser = { _id, ...userData };
 
       mockUserService.create.mockResolvedValue(mockUser);
@@ -72,8 +56,8 @@ describe('UsersController', () => {
     });
   });
 
-  describe('find users data', () => {
-    it('should return all users data', async () => {
+  describe("find users data", () => {
+    it("should return all users data", async () => {
       const mockUser = [{ _id, ...userData }];
 
       mockUserService.findAll.mockResolvedValue(mockUser);
@@ -86,8 +70,8 @@ describe('UsersController', () => {
     });
   });
 
-  describe('find an user data', () => {
-    it('should return an user data by id', async () => {
+  describe("find an user data", () => {
+    it("should return an user data by id", async () => {
       const mockUser = { _id, ...userData };
 
       mockUserService.findOne.mockResolvedValue(mockUser);
@@ -100,8 +84,8 @@ describe('UsersController', () => {
     });
   });
 
-  describe('update an user data', () => {
-    it('should update and return an user data', async () => {
+  describe("update an user data", () => {
+    it("should update and return an user data", async () => {
       const updateData = { age: 30 };
       const mockUser = { _id, ...userData, ...updateData };
       mockUserService.update.mockResolvedValue(mockUser);
@@ -114,8 +98,8 @@ describe('UsersController', () => {
     });
   });
 
-  describe('delete an user data', () => {
-    it('should delete and return an user data', async () => {
+  describe("delete an user data", () => {
+    it("should delete and return an user data", async () => {
       const mockUser = { _id, ...userData };
       mockUserService.remove.mockResolvedValue(mockUser);
 
