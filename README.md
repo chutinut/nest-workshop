@@ -1,13 +1,14 @@
 # nest-workshop
 
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+    <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  &nbsp;
+  <a href="https://www.mongodb.com/" target="blank"><img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" width="120" alt="MongoDB Logo" /></a>
 </p>
 
 ## Description
 
-This project is my library for learning NestJS framework.
-
+This project is my library for learning NestJS framework.</br>
 This repository will create an API using NestJS, MongoDB, and also include Unit Testing.
 
 ## Features
@@ -67,7 +68,8 @@ For everyone who interest in my workshop and want to use this repository to lear
 
 ## Resources
 
-NestJS - [Introduction](https://docs.nestjs.com/)
+NestJS - [Introduction](https://docs.nestjs.com/)</br>
+MongoDB - [Docs](https://www.mongodb.com/docs/atlas/)
 
 ## Blog
 
